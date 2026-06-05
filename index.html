@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>住宅ローン計算機 | Loan Calculator</title>
+<meta name="description" content="シンプルで使いやすい住宅ローンシミュレーター。月々の返済額・総返済額・利息を一瞬で計算します。">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0f1419;
+    --bg-card: #1a2128;
+    --bg-card-hover: #1f262e;
+    --border: #2a333d;
+    --text: #e8eaed;
+    --text-muted: #9aa0a6;
+    --accent: #d4a373;
+    --accent-soft: rgba(212, 163, 115, 0.12);
+    --highlight: #e8c39e;
+    --danger: #d97757;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "JetBrains Mono", monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(at 20% 10%, rgba(212, 163, 115, 0.06) 0px, transparent 50%),
+      radial-gradient(at 80% 90%, rgba(212, 163, 115, 0.04) 0px, transparent 50%);
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .header {
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .header .sub {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 32px;
+  }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .container { padding: 32px 16px; }
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+  }
+
+  .card h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+
+  .field {
+    margin-bottom: 22px;
+  }
+
+  .field label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .input-wrap {
+    position: relative;
+  }
+
+  .input-wrap input {
+    width: 100%;
+    padding: 14px 56px 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    transition: all 0.2s ease;
+  }
+
+  .input-wrap input:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--bg-card-hover);
+  }
+
+  .input-wrap .unit {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    pointer-events: none;
+  }
+
+  .input-wrap input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    padding: 0;
+    height: 4px;
+    background: var(--border);
+    margin-top: 14px;
+  }
+
+  .input-wrap input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .input-wrap input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+  }
+
+  .results .primary-result {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, transparent 100%);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+
+  .primary-result .label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .primary-result .value {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 500;
+    color: var(--highlight);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .secondary-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .stat {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .stat .label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .stat .value {
+    font-family: var(--mono);
+    font-size: 1.1rem;
+    color: var(--text);
+  }
+
+  .schedule {
+    margin-top: 24px;
+    border-top: 1px solid var(--border);
+    padding-top: 24px;
+  }
+
+  .schedule summary {
+    cursor: pointer;
+    color: var(--accent);
+    font-size: 0.9rem;
+    user-select: none;
+    list-style: none;
+  }
+
+  .schedule summary::-webkit-details-marker { display: none; }
+
+  .schedule summary::before {
+    content: "▸ ";
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+
+  .schedule[open] summary::before {
+    transform: rotate(90deg);
+  }
+
+  .schedule-table {
+    margin-top: 16px;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    max-height: 360px;
+    overflow-y: auto;
+    display: block;
+  }
+
+  .schedule-table thead {
+    position: sticky;
+    top: 0;
+    background: var(--bg-card);
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding: 10px 8px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .schedule-table th {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.78rem;
+  }
+
+  .schedule-table th:first-child,
+  .schedule-table td:first-child {
+    text-align: left;
+  }
+
+  .footer {
+    margin-top: 48px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    margin-top: 6px;
+    min-height: 1.2em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <h1>住宅ローン計算機</h1>
+    <p class="sub">月々の返済額・総返済額・利息を瞬時に計算</p>
+  </header>
+
+  <div class="grid">
+    <!-- 入力カード -->
+    <section class="card">
+      <h2>条件を入力</h2>
+
+      <div class="field">
+        <label for="principal">借入金額</label>
+        <div class="input-wrap">
+          <input type="number" id="principal" value="30000000" min="100000" step="100000">
+          <span class="unit">円</span>
+        </div>
+        <input type="range" id="principal-range" min="1000000" max="100000000" step="100000" value="30000000">
+      </div>
+
+      <div class="field">
+        <label for="rate">年利</label>
+        <div class="input-wrap">
+          <input type="number" id="rate" value="1.5" min="0" max="20" step="0.05">
+          <span class="unit">%</span>
+        </div>
+        <input type="range" id="rate-range" min="0" max="5" step="0.05" value="1.5">
+      </div>
+
+      <div class="field">
+        <label for="years">返済年数</label>
+        <div class="input-wrap">
+          <input type="number" id="years" value="35" min="1" max="50">
+          <span class="unit">年</span>
+        </div>
+        <input type="range" id="years-range" min="1" max="50" value="35">
+      </div>
+
+      <div id="error" class="error"></div>
+    </section>
+
+    <!-- 結果カード -->
+    <section class="card results">
+      <h2>計算結果</h2>
+
+      <div class="primary-result">
+        <div class="label">月々の返済額</div>
+        <div class="value" id="monthly-value">¥0</div>
+      </div>
+
+      <div class="secondary-results">
+        <div class="stat">
+          <div class="label">総返済額</div>
+          <div class="value" id="total-value">¥0</div>
+        </div>
+        <div class="stat">
+          <div class="label">利息総額</div>
+          <div class="value" id="interest-value">¥0</div>
+        </div>
+      </div>
+
+      <details class="schedule">
+        <summary>返済スケジュールを見る</summary>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>回</th>
+              <th>返済額</th>
+              <th>元本</th>
+              <th>利息</th>
+              <th>残高</th>
+            </tr>
+          </thead>
+          <tbody id="schedule-body"></tbody>
+        </table>
+      </details>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>※本計算は元利均等返済方式に基づくシミュレーションです。実際の借入条件は金融機関にご確認ください。</p>
+    <p style="margin-top:8px;">
+      <a href="https://github.com/YOUR_USERNAME/loan-calculator-web" target="_blank" rel="noopener">GitHub</a>
+      &nbsp;·&nbsp;
+      MIT License
+    </p>
+  </footer>
+</div>
+
+<script type="module">
+  import {
+    monthlyPayment,
+    totalPayment,
+    totalInterest,
+    repaymentSchedule,
+    formatYen,
+  } from "./src/loan.js";
+
+  const principalInput = document.getElementById("principal");
+  const rateInput = document.getElementById("rate");
+  const yearsInput = document.getElementById("years");
+  const principalRange = document.getElementById("principal-range");
+  const rateRange = document.getElementById("rate-range");
+  const yearsRange = document.getElementById("years-range");
+
+  const errorEl = document.getElementById("error");
+  const monthlyEl = document.getElementById("monthly-value");
+  const totalEl = document.getElementById("total-value");
+  const interestEl = document.getElementById("interest-value");
+  const scheduleBody = document.getElementById("schedule-body");
+
+  // 入力⇄レンジの同期
+  function syncInputs(input, range) {
+    input.addEventListener("input", () => {
+      range.value = input.value;
+      recalculate();
+    });
+    range.addEventListener("input", () => {
+      input.value = range.value;
+      recalculate();
+    });
+  }
+
+  syncInputs(principalInput, principalRange);
+  syncInputs(rateInput, rateRange);
+  syncInputs(yearsInput, yearsRange);
+
+  function recalculate() {
+    errorEl.textContent = "";
+    const principal = parseFloat(principalInput.value);
+    const rate = parseFloat(rateInput.value);
+    const years = parseInt(yearsInput.value, 10);
+
+    if (isNaN(principal) || isNaN(rate) || isNaN(years)) {
+      errorEl.textContent = "すべての項目を入力してください";
+      return;
+    }
+
+    try {
+      const monthly = monthlyPayment(principal, rate, years);
+      const total = totalPayment(principal, rate, years);
+      const interest = totalInterest(principal, rate, years);
+
+      monthlyEl.textContent = formatYen(monthly);
+      totalEl.textContent = formatYen(total);
+      interestEl.textContent = formatYen(interest);
+
+      // スケジュール描画(全件)
+      const schedule = repaymentSchedule(principal, rate, years);
+      const rows = schedule.map(row => `
+        <tr>
+          <td>${row.month}回目</td>
+          <td>${formatYen(row.payment)}</td>
+          <td>${formatYen(row.principalPaid)}</td>
+          <td>${formatYen(row.interestPaid)}</td>
+          <td>${formatYen(row.balance)}</td>
+        </tr>
+      `).join("");
+      scheduleBody.innerHTML = rows;
+    } catch (e) {
+      errorEl.textContent = e.message;
+    }
+  }
+
+  recalculate();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "loan-calculator-web",
+  "version": "0.1.0",
+  "description": "シンプルで使いやすい住宅ローン計算機(Webアプリ)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": ["loan", "calculator", "mortgage", "japanese"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
