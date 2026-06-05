@@ -4,78 +4,78 @@
 [![Deploy](https://github.com/sou4862ii-art/loan-calculator-web/actions/workflows/deploy.yml/badge.svg)](https://github.com/sou4862ii-art/loan-calculator-web/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-シンプルで使ぁE��すい住宁E��ーン計算橁Eシングルペ�EジWebアプリ)、E
-🌐 **チE��**: https://sou4862ii-art.github.io/loan-calculator-web/
+繧ｷ繝ｳ繝励Ν縺ｧ菴ｿ縺・ｄ縺吶＞菴丞ｮ・Ο繝ｼ繝ｳ險育ｮ玲ｩ・繧ｷ繝ｳ繧ｰ繝ｫ繝壹・繧ｸWeb繧｢繝励Μ)縲・
+倹 **繝・Δ**: https://sou4862ii-art.github.io/loan-calculator-web/
 
-## 特徴
+## 迚ｹ蠕ｴ
 
-- 🧮 月、E�E返済額�E総返済額�E利息総額をリアルタイム計箁E(允E��坁E��返済方弁E
-- 📊 全期間の返済スケジュール(償還表)を表示
-- 🎚�E�Eスライダーと数値入力�E双方向同期で直感的に試箁E- 🌒 落ち着ぁE��ダークチE�Eマ�EモダンUI
-- 🚀 依存ライブラリなし、ピュアJS、軽釁E- 🧪 計算ロジチE��は Node.js Test Runner でチE��ト済み (15チE��ト�Eパス)
-- ☁E��EGitHub Pages で自動デプロイ
+- ｧｮ 譛医・・霑疲ｸ磯｡阪・邱剰ｿ疲ｸ磯｡阪・蛻ｩ諱ｯ邱城｡阪ｒ繝ｪ繧｢繝ｫ繧ｿ繧､繝險育ｮ・(蜈・茜蝮・ｭ芽ｿ疲ｸ域婿蠑・
+- 投 蜈ｨ譛滄俣縺ｮ霑疲ｸ医せ繧ｱ繧ｸ繝･繝ｼ繝ｫ(蜆滄ｄ陦ｨ)繧定｡ｨ遉ｺ
+- 字・・繧ｹ繝ｩ繧､繝繝ｼ縺ｨ謨ｰ蛟､蜈･蜉帙・蜿梧婿蜷大酔譛溘〒逶ｴ諢溽噪縺ｫ隧ｦ邂・- 健 關ｽ縺｡逹縺・◆繝繝ｼ繧ｯ繝・・繝槭・繝｢繝繝ｳUI
+- 噫 萓晏ｭ倥Λ繧､繝悶Λ繝ｪ縺ｪ縺励√ヴ繝･繧｢JS縲∬ｻｽ驥・- ｧｪ 險育ｮ励Ο繧ｸ繝・け縺ｯ Node.js Test Runner 縺ｧ繝・せ繝域ｸ医∩ (15繝・せ繝亥・繝代せ)
+- 笘・ｸ・GitHub Pages 縺ｧ閾ｪ蜍輔ョ繝励Ο繧､
 
-## チE��プレビュー
+## 繝・Δ繝励Ξ繝薙Η繝ｼ
 
-借�E金額�E金利・年数を変更すると、月、E�E返済額と返済スケジュールが即座に更新されます、E
+蛟溷・驥鷹｡阪・驥大茜繝ｻ蟷ｴ謨ｰ繧貞､画峩縺吶ｋ縺ｨ縲∵怦縲・・霑疲ｸ磯｡阪→霑疲ｸ医せ繧ｱ繧ｸ繝･繝ｼ繝ｫ縺悟叉蠎ｧ縺ｫ譖ｴ譁ｰ縺輔ｌ縺ｾ縺吶・
 ```
-借�E: 3000丁E�E / 年利: 1.5% / 期間: 35年
-  ↁE月、E�E返済顁E ¥91,855
-総返済顁E     ¥38,579,100
-利息総顁E     ¥8,579,100
+蛟溷・: 3000荳・・ / 蟷ｴ蛻ｩ: 1.5% / 譛滄俣: 35蟷ｴ
+  竊・譛医・・霑疲ｸ磯｡・ ﾂ･91,855
+邱剰ｿ疲ｸ磯｡・     ﾂ･38,579,100
+蛻ｩ諱ｯ邱城｡・     ﾂ･8,579,100
 ```
 
-## セチE��アチE�E
+## 繧ｻ繝・ヨ繧｢繝・・
 
-### ローカルで動かぁE
+### 繝ｭ繝ｼ繧ｫ繝ｫ縺ｧ蜍輔°縺・
 ```bash
 git clone https://github.com/sou4862ii-art/loan-calculator-web.git
 cd loan-calculator-web
 
-# どちらでもOK
-npm run serve  # ↁEhttp://localhost:8000
-# また�E直接 index.html をブラウザで開く
+# 縺ｩ縺｡繧峨〒繧０K
+npm run serve  # 竊・http://localhost:8000
+# 縺ｾ縺溘・逶ｴ謗･ index.html 繧偵ヶ繝ｩ繧ｦ繧ｶ縺ｧ髢九￥
 ```
 
-### チE��ト実衁E
+### 繝・せ繝亥ｮ溯｡・
 ```bash
 npm test
 ```
 
-## 計算弁E
-允E��坁E��返済方式に基づぁE��標準計算式を使用してぁE��す、E
+## 險育ｮ怜ｼ・
+蜈・茜蝮・ｭ芽ｿ疲ｸ域婿蠑上↓蝓ｺ縺･縺・◆讓呎ｺ冶ｨ育ｮ怜ｼ上ｒ菴ｿ逕ｨ縺励※縺・∪縺吶・
 ```
-M = P ÁEr ÁE(1+r)^n / ((1+r)^n - 1)
+M = P ﾃ・r ﾃ・(1+r)^n / ((1+r)^n - 1)
 ```
 
-- M: 月額返済顁E- P: 借�E允E��
-- r: 月利 (年利 / 12 / 100)
-- n: 返済回数 (年数 ÁE12)
+- M: 譛磯｡崎ｿ疲ｸ磯｡・- P: 蛟溷・蜈・悽
+- r: 譛亥茜 (蟷ｴ蛻ｩ / 12 / 100)
+- n: 霑疲ｸ亥屓謨ｰ (蟷ｴ謨ｰ ﾃ・12)
 
-金利0%の場合�E単純割で計算します、E
-## プロジェクト構造
+驥大茜0%縺ｮ蝣ｴ蜷医・蜊倡ｴ泌牡縺ｧ險育ｮ励＠縺ｾ縺吶・
+## 繝励Ο繧ｸ繧ｧ繧ｯ繝域ｧ矩
 
 ```
 loan-calculator-web/
-├── index.html           # メインのUI
-├── src/
-━E  └── loan.js         # 計算ロジチE�� (純粋関数)
-├── tests/
-━E  └── loan.test.js    # Node.js Test Runner
-├── .github/workflows/
-━E  ├── tests.yml       # CI
-━E  └── deploy.yml      # GitHub Pages 自動デプロイ
-└── package.json
+笏懌楳笏 index.html           # 繝｡繧､繝ｳ縺ｮUI
+笏懌楳笏 src/
+笏・  笏披楳笏 loan.js         # 險育ｮ励Ο繧ｸ繝・け (邏皮ｲ矩未謨ｰ)
+笏懌楳笏 tests/
+笏・  笏披楳笏 loan.test.js    # Node.js Test Runner
+笏懌楳笏 .github/workflows/
+笏・  笏懌楳笏 tests.yml       # CI
+笏・  笏披楳笏 deploy.yml      # GitHub Pages 閾ｪ蜍輔ョ繝励Ο繧､
+笏披楳笏 package.json
 ```
 
-ロジチE��とUIを�E確に刁E��してぁE��ため、計算部刁E�ENode.jsで独立してチE��ト可能です、E
-## API (ライブラリとしての利用)
+繝ｭ繧ｸ繝・け縺ｨUI繧呈・遒ｺ縺ｫ蛻・屬縺励※縺・ｋ縺溘ａ縲∬ｨ育ｮ鈴Κ蛻・・Node.js縺ｧ迢ｬ遶九＠縺ｦ繝・せ繝亥庄閭ｽ縺ｧ縺吶・
+## API (繝ｩ繧､繝悶Λ繝ｪ縺ｨ縺励※縺ｮ蛻ｩ逕ｨ)
 
-`src/loan.js` は ESM モジュールとして単独で利用できます、E
+`src/loan.js` 縺ｯ ESM 繝｢繧ｸ繝･繝ｼ繝ｫ縺ｨ縺励※蜊倡峡縺ｧ蛻ｩ逕ｨ縺ｧ縺阪∪縺吶・
 ```javascript
 import { monthlyPayment, totalPayment, repaymentSchedule } from "./src/loan.js";
 
-// 3000丁E�E・年利1.5%・35年
+// 3000荳・・繝ｻ蟷ｴ蛻ｩ1.5%繝ｻ35蟷ｴ
 console.log(monthlyPayment(30000000, 1.5, 35));  // 91855
 console.log(totalPayment(30000000, 1.5, 35));    // 38579100
 
@@ -84,15 +84,15 @@ console.log(schedule[0]);
 // { month: 1, payment: 91855, principalPaid: 54355, interestPaid: 37500, balance: 29945645 }
 ```
 
-## カスタマイズのご相諁E
-以下�Eような拡張のご相諁E��りまぁE
+## 繧ｫ繧ｹ繧ｿ繝槭う繧ｺ縺ｮ縺皮嶌隲・
+莉･荳九・繧医≧縺ｪ諡｡蠑ｵ縺ｮ縺皮嶌隲・価繧翫∪縺・
 
-- 繰上げ返済シミュレーション機�Eの追加
-- ボ�Eナス返済�E対忁E- 褁E��ローンの比輁E���E
-- PDF/Excel での結果ダウンローチE- 既存サイトへの絁E��込み
+- 郢ｰ荳翫￡霑疲ｸ医す繝溘Η繝ｬ繝ｼ繧ｷ繝ｧ繝ｳ讖溯・縺ｮ霑ｽ蜉
+- 繝懊・繝翫せ霑疲ｸ医・蟇ｾ蠢・- 隍・焚繝ｭ繝ｼ繝ｳ縺ｮ豈碑ｼ・ｩ溯・
+- PDF/Excel 縺ｧ縺ｮ邨先棡繝繧ｦ繝ｳ繝ｭ繝ｼ繝・- 譌｢蟄倥し繧､繝医∈縺ｮ邨・∩霎ｼ縺ｿ
 
-## 免責事頁E
-本計算�Eシミュレーションです。実際の借�E条件・金利・諸費用は金融機関にご確認ください、E
-## ライセンス
+## 蜈崎ｲｬ莠矩・
+譛ｬ險育ｮ励・繧ｷ繝溘Η繝ｬ繝ｼ繧ｷ繝ｧ繝ｳ縺ｧ縺吶ょｮ滄圀縺ｮ蛟溷・譚｡莉ｶ繝ｻ驥大茜繝ｻ隲ｸ雋ｻ逕ｨ縺ｯ驥題檮讖滄未縺ｫ縺皮｢ｺ隱阪￥縺縺輔＞縲・
+## 繝ｩ繧､繧ｻ繝ｳ繧ｹ
 
-MIT License - 詳細は [LICENSE](LICENSE) を参照
+MIT License - 隧ｳ邏ｰ縺ｯ [LICENSE](LICENSE) 繧貞盾辣ｧ
