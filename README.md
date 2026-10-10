@@ -1,4 +1,3 @@
-<img width="991" height="700" alt="image" src="https://github.com/user-attachments/assets/220b56c0-4888-4dac-ba6c-3f77505968fd" />
 
 # loan-calculator-web
 
@@ -9,6 +8,7 @@
 シンプルで使いやすい住宅ローン計算機(シングルページWebアプリ)。
 
 **デモ**: <https://sou4862ii-art.github.io/loan-calculator-web/>
+<img width="991" height="700" alt="image" src="https://github.com/user-attachments/assets/220b56c0-4888-4dac-ba6c-3f77505968fd" />
 
 ## 特徴
 
