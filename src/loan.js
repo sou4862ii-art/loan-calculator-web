@@ -59,7 +59,7 @@ export function totalPayment(principal, annualRate, years) {
  * @param {number} years
  * @returns {number} 利息総額(円)
  */
-export function totalInterest(principal, annualRate, years) {
+export function totalPayment(principal, annualRate, years) {
   return totalPayment(principal, annualRate, years) - principal;
 }
 
@@ -81,7 +81,9 @@ export function repaymentSchedule(principal, annualRate, years) {
 
   for (let month = 1; month <= totalMonths; month++) {
     const interestPaid = Math.round(balance * monthlyRate);
-    let principalPaid = monthly - interestPaid;
+    //let principalPaid = monthly - interestPaid;
+    // 変更後
+    let principalPaid = Math.min(monthly - interestPaid, balance);
 
     // 最終月の調整(残高をピッタリ0に)
     if (month === totalMonths) {
