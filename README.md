@@ -1,3 +1,5 @@
+<img width="991" height="700" alt="image" src="https://github.com/user-attachments/assets/220b56c0-4888-4dac-ba6c-3f77505968fd" />
+
 # loan-calculator-web
 
 [![tests](https://github.com/sou4862ii-art/loan-calculator-web/actions/workflows/tests.yml/badge.svg)](https://github.com/sou4862ii-art/loan-calculator-web/actions)
