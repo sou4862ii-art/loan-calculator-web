@@ -4,7 +4,7 @@
   "description": "シンプルで使いやすい住宅ローン計算機(Webアプリ)",
   "type": "module",
   "scripts": {
-    "test": "node --test tests/",
+    "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8000"
   },
   "keywords": ["loan", "calculator", "mortgage", "japanese"],

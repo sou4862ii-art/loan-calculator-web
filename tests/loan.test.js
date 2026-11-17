@@ -40,10 +40,15 @@ describe("monthlyPayment", () => {
 });
 
 describe("totalPayment & totalInterest", () => {
-  test("総返済額 = 月額 × 返済月数", () => {
-    const monthly = monthlyPayment(30000000, 1.5, 35);
-    const total = totalPayment(30000000, 1.5, 35);
-    assert.equal(total, monthly * 35 * 12);
+  test("総返済額 = 返済表の支払額の合計（最終回は端数を調整）", () => {
+    const schedule = repaymentSchedule(30000000, 1.5, 35);
+    const sum = schedule.reduce((s, row) => s + row.payment, 0);
+    assert.equal(totalPayment(30000000, 1.5, 35), sum);
+
+    // 月額×回数との差は、最終回の調整分なので1回分の返済額より小さい
+    const m = monthlyPayment(30000000, 1.5, 35);
+    const diff = m * 35 * 12 - sum;
+    assert.ok(diff >= 0 && diff < m, `差額 ${diff} 円`);
   });
 
   test("利息総額 = 総返済額 - 元本", () => {

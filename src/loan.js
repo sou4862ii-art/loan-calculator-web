@@ -20,7 +20,7 @@
  * @param {number} years - 返済年数
  * @returns {number} 月額返済額(円、小数点以下切り上げ)
  */
-export function totalInterest(principal, annualRate, years) {
+export function monthlyPayment(principal, annualRate, years) {
   if (principal <= 0) throw new Error("元本は正の数を指定してください");
   if (years <= 0) throw new Error("返済年数は正の数を指定してください");
   if (annualRate < 0) throw new Error("金利は0以上を指定してください");
@@ -59,7 +59,7 @@ export function totalPayment(principal, annualRate, years) {
  * @param {number} years
  * @returns {number} 利息総額(円)
  */
-export function totalPayment(principal, annualRate, years) {
+export function totalInterest(principal, annualRate, years) {
   return totalPayment(principal, annualRate, years) - principal;
 }
 
