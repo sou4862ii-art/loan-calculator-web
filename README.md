@@ -8,7 +8,8 @@
 
 **デモ**: <https://sou4862ii-art.github.io/loan-calculator-web/>
 
-<img width="991" height="700" alt="image" src="https://github.com/user-attachments/assets/220b56c0-4888-4dac-ba6c-3f77505968fd" />
+<img width="1356" height="837" alt="image" src="https://github.com/user-attachments/assets/9c8b2c2e-5ec0-4962-9cfa-1b48c5ed46ed" />
+
 
 ## 特徴
 
