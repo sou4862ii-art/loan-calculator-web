@@ -27,9 +27,11 @@
 ```
 借入: 3000万円 / 年利: 1.5% / 期間: 35年
   → 月々の返済額: ¥91,856
-総返済額:      ¥38,579,520
-利息総額:      ¥8,579,520
+総返済額:      ¥38,579,150
+利息総額:      ¥8,579,150
 ```
+
+最終回（420回目）は残高ぴったりに調整するため ¥91,486 になります。そのため総返済額は「月々の返済額 × 420回」より少し少なくなります。
 
 ## セットアップ
 
@@ -88,12 +90,12 @@ loan-calculator-web/
 import { monthlyPayment, totalPayment, repaymentSchedule } from "./src/loan.js";
 
 // 3000万円・年利1.5%・35年
-console.log(monthlyPayment(30000000, 1.5, 35));  // 91855
-console.log(totalPayment(30000000, 1.5, 35));    // 38579100
+console.log(monthlyPayment(30000000, 1.5, 35));  // 91856
+console.log(totalPayment(30000000, 1.5, 35));    // 38579150
 
 const schedule = repaymentSchedule(30000000, 1.5, 35);
 console.log(schedule[0]);
-// { month: 1, payment: 91855, principalPaid: 54355, interestPaid: 37500, balance: 29945645 }
+// { month: 1, payment: 91856, principalPaid: 54356, interestPaid: 37500, balance: 29945644 }
 ```
 
 ## カスタマイズのご相談

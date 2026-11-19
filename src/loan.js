@@ -81,8 +81,7 @@ export function repaymentSchedule(principal, annualRate, years) {
 
   for (let month = 1; month <= totalMonths; month++) {
     const interestPaid = Math.round(balance * monthlyRate);
-    //let principalPaid = monthly - interestPaid;
-    // 変更後
+    // 残高を超えて元本を払わないよう、残高で頭打ちにする
     let principalPaid = Math.min(monthly - interestPaid, balance);
 
     // 最終月の調整(残高をピッタリ0に)
